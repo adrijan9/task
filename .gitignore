@@ -1,0 +1,10 @@
+
+tasks_fixed.dSYM/
+
+tasks_dynamic.dSYM/
+
+build/
+
+.idea/
+
+.DS_Store
