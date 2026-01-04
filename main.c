@@ -40,8 +40,16 @@ int main(const int argc, char *argv[]) {
 
             return create_task(argv[optind]);
         case 'd':
+            if (argv[optind] == NULL) {
+                printf("\nUsage: tasks -d [TIMESTAMPT]\n");
+                return EXIT_FAILURE;
+            }
             return delete_task(argv[optind]);
         case 'p':
+            if (argv[optind] == NULL) {
+                printf("\nUsage: tasks -p [TIMESTAMPT]\n");
+                return EXIT_FAILURE;
+            }
             return preview_task(argv[optind]);
         default:
             printf("Unknown option: -%c\n", optopt ? optopt : '?');
