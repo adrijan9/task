@@ -5,6 +5,10 @@
 `tasks` is a simple productivity utility that stores each task as its own directory containing a `TASK.md` file.  
 The structure is intentionally designed to support future expansion such as attachments, images, or additional metadata alongside the Markdown file.
 
+> ⚠️ Disclaimer  
+> This is a personal project provided as-is.  
+Use at your own risk. No guarantees are provided regarding data safety or stability.
+
 ## ✨ Features
 
 - File-based task storage (no database, no lock-in)
@@ -32,11 +36,6 @@ When executed, `tasks` creates (or uses) a `tasks/` directory in the **current w
 - If run **inside** an existing `tasks/` directory, it uses that directory directly and avoids nesting.
 
 This makes the tool fully portable and project-local.
-
-## ⚠️ Disclaimer
-
-This is a personal project provided as-is.  
-Use at your own risk. No guarantees are provided regarding data safety or stability.
 
 ## 🧰 Requirements
 
