@@ -23,14 +23,20 @@ If you are on macOS and you want to test for Linux then you have:
 ```shell
 sh ./linux_test.sh
 ```
-which run docker, builds the project and automatically run the `./test_cli.sh` 
+which run docker, builds the project and automatically run the `./test_cli.sh`   
+If you are on macOS/Linux and you want to test for windows:
+```shell
+sh ./windows_test.sh
+```
 
 ## 🖥️ OS Support
 
 - macOS: supported
 - Linux: supported
-- Windows: not supported (for now)
-- 
+- Windows: supported (not verified yet)
+  - TODO: Fix windows_test.dockerfile
+    - and windows_test.sh
+
 ## ✨ Features
 
 - File-based task storage (no database, no lock-in)
