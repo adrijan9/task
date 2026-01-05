@@ -30,7 +30,7 @@ bool setup(void) {
         snprintf(task_directory, sizeof(task_directory), "%s/%s", cwd, TASK_DIRECTORY_NAME);
     }
 
-    const int res = create_directory(task_directory);
+    const int res = fs_create_directory(task_directory);
     if (res == -1) {
         fprintf(stderr, "Error tasks directory.\n");
         return false;

@@ -32,7 +32,7 @@ void load_tasks(void) {
 
     char *meta_file_path = get_meta_file_path();
 
-    if (!check_file_exists(meta_file_path)) {
+    if (!fs_check_file_exists(meta_file_path)) {
         tasks = malloc(sizeof(Task) * TASKS_CAPACITY);
         if (tasks == NULL) {
             perror("Error creating tasks");
@@ -205,7 +205,7 @@ int create_task(char *title) {
         return EXIT_FAILURE;
     }
 
-    if (create_directory(dir_path) != 0) {
+    if (fs_create_directory(dir_path) != 0) {
         fprintf(stderr, "Error creating task %s directory\n", id);
         free(id);
         free(dir_path);
@@ -223,7 +223,7 @@ int create_task(char *title) {
 
     char *content = create_task_content(id, title);
 
-    if (!create_file(file_path, content)) {
+    if (!fs_create_file(file_path, content)) {
         perror("Error creating file2");
         free(id);
         free(dir_path);
@@ -358,17 +358,17 @@ int delete_task(const char *task_id) {
         return EXIT_FAILURE;
     }
 
-    if (!check_file_exists(task_file)) {
+    if (!fs_check_file_exists(task_file)) {
         printf("Task %s file does not exists.\n", task_id);
         return EXIT_FAILURE;
     }
 
-    if (!remove_file(task_file)) {
+    if (!fs_remove_file(task_file)) {
         return EXIT_FAILURE;
     }
 
     const char* task_dir = create_task_path(task_id, false);
-    if (!remove_directory(task_dir)) {
+    if (!fs_remove_directory(task_dir)) {
         return EXIT_FAILURE;
     }
 
