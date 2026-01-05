@@ -4,7 +4,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-int create_directory(const char *dir_path) {
+int fs_create_directory(const char *dir_path) {
     const int status = mkdir(dir_path, 0755);
 
     if (status == -1) {
@@ -18,7 +18,7 @@ int create_directory(const char *dir_path) {
     return 0;
 }
 
-bool remove_directory(const char *dir_path) {
+bool fs_remove_directory(const char *dir_path) {
     if (rmdir(dir_path) == -1) {
         perror("Error removing directory");
         return false;
@@ -27,7 +27,7 @@ bool remove_directory(const char *dir_path) {
     return true;
 }
 
-long file_get_size(const char *filename) {
+long fs_get_file_size(const char *filename) {
     struct stat st;
     if (stat(filename, &st) != 0) {
         return -1;
@@ -35,11 +35,11 @@ long file_get_size(const char *filename) {
     return st.st_size;
 }
 
-bool check_file_exists(const char *filename) {
-    return file_get_size(filename) >= 0;
+bool fs_check_file_exists(const char *filename) {
+    return fs_get_file_size(filename) >= 0;
 }
 
-bool create_file(const char *file_path, const char *content) {
+bool fs_create_file(const char *file_path, const char *content) {
     FILE *file = fopen(file_path, "w");
 
     if (file == NULL) {
@@ -55,7 +55,7 @@ bool create_file(const char *file_path, const char *content) {
     return true;
 }
 
-bool remove_file(const char *file_path) {
+bool fs_remove_file(const char *file_path) {
     if (unlink(file_path) == -1) {
         perror("Error removing file");
         return false;
