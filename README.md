@@ -9,10 +9,26 @@ The structure is intentionally designed to support future expansion such as atta
 > This is a personal recreational project provided as-is.  
 Use at your own risk. No guarantees are provided regarding data safety or stability.
 
+> ℹ️ Note
+> While building on Linux/Mac you can test:
+```shell
+sh tests/test_cli.sh ./build/task
+```
+or
+```shell 
+chmod +x ./tests/test_cli.sh
+tests/test_cli.sh ./build/task
+```
+If you are on macOS and you want to test for Linux then you have: 
+```shell
+sh ./linux_test.sh
+```
+which run docker, builds the project and automatically run the `./test_cli.sh` 
+
 ## 🖥️ OS Support
 
 - macOS: supported
-- Linux: not verified
+- Linux: supported
 - Windows: not supported (for now)
 - 
 ## ✨ Features
