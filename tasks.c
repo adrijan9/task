@@ -32,7 +32,7 @@ void task_load(void) {
 
     char *meta_file_path = app_get_meta_file_path();
 
-    if (!fs_check_file_exists(meta_file_path)) {
+    if (!fs_file_exists(meta_file_path)) {
         tasks = malloc(sizeof(Task) * TASKS_CAPACITY);
         if (tasks == NULL) {
             perror("Error creating tasks");
@@ -358,7 +358,7 @@ int task_delete(const char *task_id) {
         return EXIT_FAILURE;
     }
 
-    if (!fs_check_file_exists(task_file)) {
+    if (!fs_file_exists(task_file)) {
         printf("Task %s file does not exists.\n", task_id);
         return EXIT_FAILURE;
     }
