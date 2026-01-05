@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 4.1)
+cmake_minimum_required(VERSION 3.22)
 project(task C)
 
 set(CMAKE_C_STANDARD 11)
-set(DEBUG 0)
+option(DEBUG "Enable debug build flags" OFF)
 
 add_executable(task main.c app.c filesystem.c tasks.c)
 target_include_directories(task PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
@@ -16,4 +16,9 @@ endif ()
 
 install(TARGETS task
     RUNTIME DESTINATION bin
+)
+
+enable_testing()
+add_test(NAME cli_basic
+    COMMAND /bin/sh ${CMAKE_CURRENT_SOURCE_DIR}/tests/test_cli.sh $<TARGET_FILE:task>
 )
