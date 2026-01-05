@@ -13,7 +13,7 @@ int main(const int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
 
-    load_tasks();
+    task_load();
 
     if (argc == 1) {
         display_help();
@@ -30,7 +30,7 @@ int main(const int argc, char *argv[]) {
             return EXIT_SUCCESS;
         case 'a':
             printf("\nTasks:\n");
-            show_tasks();
+            task_show();
             return EXIT_SUCCESS;
         case 'c':
             if (argv[optind] == NULL) {
@@ -38,19 +38,19 @@ int main(const int argc, char *argv[]) {
                 return EXIT_FAILURE;
             }
 
-            return create_task(argv[optind]);
+            return task_create(argv[optind]);
         case 'd':
             if (argv[optind] == NULL) {
                 printf("\nUsage: tasks -d [TIMESTAMPT]\n");
                 return EXIT_FAILURE;
             }
-            return delete_task(argv[optind]);
+            return task_delete(argv[optind]);
         case 'p':
             if (argv[optind] == NULL) {
                 printf("\nUsage: tasks -p [TIMESTAMPT]\n");
                 return EXIT_FAILURE;
             }
-            return preview_task(argv[optind]);
+            return task_preview(argv[optind]);
         default:
             printf("Unknown option: -%c\n", optopt ? optopt : '?');
             return EXIT_FAILURE;

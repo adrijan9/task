@@ -12,10 +12,10 @@ typedef struct {
     char file_path[FILE_PATH_SIZE];
 } Task;
 
-void load_tasks(void);
-void show_tasks(void);
-int create_task(char *title);
-int delete_task(const char *task_id);
-int preview_task(const char *task_id);
+void task_load(void);
+void task_show(void);
+int task_create(char *title);
+int task_delete(const char *task_id);
+int task_preview(const char *task_id);
 
 #endif // TASKS_TASKS_H

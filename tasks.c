@@ -27,7 +27,7 @@ void destroy_tasks(void) {
     free(tasks);
 }
 
-void load_tasks(void) {
+void task_load(void) {
     task_capacity = TASKS_CAPACITY;
 
     char *meta_file_path = app_get_meta_file_path();
@@ -190,7 +190,7 @@ char *create_task_content(const char *task_id, const char *title) {
     return strdup(content);
 }
 
-int create_task(char *title) {
+int task_create(char *title) {
     char *id = create_id();
 
     if (id == NULL) {
@@ -284,7 +284,7 @@ char *get_task_title(const char *task_path) {
     return strdup(line);
 }
 
-void show_tasks(void) {
+void task_show(void) {
     const int id_width = ID_SIZE;
     const int title_width = TITLE_SIZE / 4;
 
@@ -337,10 +337,10 @@ void show_tasks(void) {
     printf("+\n");
 }
 
-int delete_task(const char *task_id) {
+int task_delete(const char *task_id) {
     if (task_id == NULL) {
         printf("\nProvide task id (20251010233212)\n");
-        show_tasks();
+        task_show();
 
         return EXIT_SUCCESS;
     }
@@ -380,10 +380,10 @@ int delete_task(const char *task_id) {
     return EXIT_SUCCESS;
 }
 
-int preview_task(const char *task_id) {
+int task_preview(const char *task_id) {
     if (task_id == NULL) {
         printf("\nProvide task id (20251010233212)\n");
-        show_tasks();
+        task_show();
         return EXIT_SUCCESS;
     }
 
@@ -398,7 +398,7 @@ int preview_task(const char *task_id) {
 
     if (file == NULL) {
         perror("preview_task: Error opening task file");
-        show_tasks();
+        task_show();
         free(task_file);
         return EXIT_FAILURE;
     }
