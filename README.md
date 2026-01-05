@@ -6,7 +6,7 @@
 The structure is intentionally designed to support future expansion such as attachments, images, or additional metadata alongside the Markdown file.
 
 > ⚠️ Disclaimer  
-> This is a personal project provided as-is.  
+> This is a personal recreational project provided as-is.  
 Use at your own risk. No guarantees are provided regarding data safety or stability.
 
 ## 🖥️ OS Support
