@@ -30,7 +30,7 @@ void destroy_tasks(void) {
 void load_tasks(void) {
     task_capacity = TASKS_CAPACITY;
 
-    char *meta_file_path = get_meta_file_path();
+    char *meta_file_path = app_get_meta_file_path();
 
     if (!fs_check_file_exists(meta_file_path)) {
         tasks = malloc(sizeof(Task) * TASKS_CAPACITY);
@@ -73,7 +73,7 @@ void load_tasks(void) {
 void save_tasks(void) {
     if (tasks == NULL) return;
 
-    char *meta_file_path = get_meta_file_path();
+    char *meta_file_path = app_get_meta_file_path();
 
     FILE *meta_file = fopen(meta_file_path, "wb");
     if (meta_file == NULL) {
@@ -147,7 +147,7 @@ Task *find_task_by_id(const char *id) {
 
 char *create_task_path(const char *task_id, const bool is_file_path) {
     const char *suffix = is_file_path ? "/TASK.md" : "";
-    const char *task_directory = get_task_directory();
+    const char *task_directory = app_get_task_directory();
     size_t len =
         strlen(task_directory) + 1 /* slash */ + strlen(task_id) + strlen(suffix) + 1; // +1 for '\0'
     char *path = malloc(len);
@@ -161,7 +161,7 @@ char *create_task_path(const char *task_id, const bool is_file_path) {
 }
 
 char *create_id(void) {
-    return get_current_time("%Y%m%d%H%M%S");
+    return app_get_current_time("%Y%m%d%H%M%S");
 }
 
 char *create_task_content(const char *task_id, const char *title) {
@@ -170,11 +170,11 @@ char *create_task_content(const char *task_id, const char *title) {
     size_t len = strlen(string_format) + strlen(task_id);
     snprintf(content, len, string_format, task_id);
 
-    char *curr_time = get_current_time("%Y-%m-%d %H:%M:%S");
+    char *curr_time = app_get_current_time("%Y-%m-%d %H:%M:%S");
     char created_at[256];
     string_format = "# CREATED_AT: %s\n\n";
     len = strlen(string_format) + strlen(curr_time);
-    snprintf(created_at, len, string_format, get_current_time("%Y-%m-%d %H:%M:%S"));
+    snprintf(created_at, len, string_format, app_get_current_time("%Y-%m-%d %H:%M:%S"));
 
     strcat(content, created_at);
     strcat(content, "    STATUS: OPEN\n");
@@ -244,7 +244,7 @@ int create_task(char *title) {
 
     save_tasks();
 
-    printf("Task created... %s/%s/TASK.md\n", get_task_directory(), id);
+    printf("Task created... %s/%s/TASK.md\n", app_get_task_directory(), id);
 
     free(id);
     free(dir_path);
@@ -409,11 +409,11 @@ int preview_task(const char *task_id) {
     char buffer2[1024];
     strcpy(buffer2, buffer);
 
-    const size_t line_len = get_longest_line_size(buffer2);
+    const size_t line_len = app_get_longest_line_size(buffer2);
 
-    create_hor_line(line_len);
+    app_create_hor_line(line_len);
     printf("%s", buffer);
-    create_hor_line(line_len);
+    app_create_hor_line(line_len);
 
     free(task_file);
 
