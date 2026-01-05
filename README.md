@@ -9,6 +9,12 @@ The structure is intentionally designed to support future expansion such as atta
 > This is a personal project provided as-is.  
 Use at your own risk. No guarantees are provided regarding data safety or stability.
 
+## 🖥️ OS Support
+
+- macOS: supported
+- Linux: not verified
+- Windows: not supported (for now)
+- 
 ## ✨ Features
 
 - File-based task storage (no database, no lock-in)
@@ -98,8 +104,6 @@ Examples:
         Task title
         // Description
 ```
-
-
 
 ## 🤝 Collaboration & Version Control
 
