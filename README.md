@@ -66,7 +66,7 @@ cmake --build build
 ```sh
 cmake -S . -B build
 cmake --build build
-sudo cp build/tasks /usr/local/bin/tasks
+make install # use (sudo make install) if permission required
 ```
 
 ## 🧭 Usage
