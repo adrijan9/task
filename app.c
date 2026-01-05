@@ -12,7 +12,7 @@
 DIR *dir = {0};
 static char task_directory[PATH_MAX] = {0};
 
-bool setup(void) {
+bool aop_setup(void) {
     char cwd[PATH_MAX] = {0};
     if (getcwd(cwd, sizeof(cwd)) == NULL) {
         perror("Error getting current directory");
@@ -46,17 +46,17 @@ bool setup(void) {
     return true;
 }
 
-const char *get_task_directory(void) {
+const char *app_get_task_directory(void) {
     return task_directory;
 }
 
-char *get_meta_file_path(void) {
+char *app_get_meta_file_path(void) {
     char buffer[PATH_MAX];
-    snprintf(buffer, sizeof(buffer), "%s%s", get_task_directory(), META_FILE_PATH);
+    snprintf(buffer, sizeof(buffer), "%s%s", app_get_task_directory(), META_FILE_PATH);
     return strdup(buffer);
 }
 
-char *get_current_time(const char *format) {
+char *app_get_current_time(const char *format) {
     time_t raw_time;
     char buffer[80];
 
@@ -74,7 +74,7 @@ char *get_current_time(const char *format) {
     return strdup(buffer);
 }
 
-size_t get_longest_line_size(char *content) {
+size_t app_get_longest_line_size(char *content) {
     char *line_ptr = NULL;
     char *line = strtok_r(content, "\n", &line_ptr);
 
@@ -88,7 +88,7 @@ size_t get_longest_line_size(char *content) {
     return size;
 }
 
-void create_hor_line(size_t len) {
+void app_create_hor_line(size_t len) {
     printf("\n");
 
     for (size_t i = 0; i < len; i++) {
