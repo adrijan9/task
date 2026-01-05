@@ -8,7 +8,7 @@
 void display_help(void);
 
 int main(const int argc, char *argv[]) {
-    if (!setup()) {
+    if (!aop_setup()) {
         perror("Error creating directory");
         return EXIT_FAILURE;
     }
@@ -61,7 +61,7 @@ int main(const int argc, char *argv[]) {
 }
 
 void display_help(void) {
-    printf("tasks - manage entries stored in %s\n\n", get_task_directory());
+    printf("tasks - manage entries stored in %s\n\n", app_get_task_directory());
     printf("Usage:\n");
     printf("  tasks [-h] [-c] [-d [TASK_ID]]\n\n");
     printf("Options:\n");
